@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Requisição de Exame Citopatológico</title>
+    <style>
+        .form-container {
+            width: 90%;
+            margin: auto;
+        }
+
+        .bloco {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            text-align: center;
+            margin-top: 0;
+        }
+
+        h2 {
+            font-size: 25px;
+            /* Tamanho maior para o subtítulo */
+        }
+
+        h3 {
+            font-size: 25px;
+            /* Tamanho maior para subtítulos menores */
+        }
+
+        h4 {
+            font-size: 25px;
+            /* Tamanho maior para títulos ainda menores */
+        }
+
+        h5 {
+            font-size: 25px;
+            /* Tamanho maior para títulos ainda menores */
+        }
+
+        h6 {
+            font-size: 25px;
+            /* Tamanho maior para títulos ainda menores */
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        .form-group-inline {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            /* Máximo de 4 colunas */
+            gap: 10px;
+            /* Espaçamento entre os itens */
+        }
+
+        @media (max-width: 1200px) {
+            .form-group-inline {
+                grid-template-columns: repeat(3, 1fr);
+                /* 3 colunas em telas menores */
+            }
+        }
+
+        @media (max-width: 900px) {
+            .form-group-inline {
+                grid-template-columns: repeat(2, 1fr);
+                /* 2 colunas em telas ainda menores */
+            }
+        }
+
+        @media (max-width: 600px) {
+            .form-group-inline {
+                grid-template-columns: 1fr;
+                /* 1 coluna em telas muito pequenas */
+            }
+        }
+        .form-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .column {
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        .input-field {
+            width: calc(100% - 22px);
+            margin-top: 5px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <img src="Captura de tela 2024-08-15 141224.jpg" alt="Prefeitura de São Paulo - Saúde" class="logo">
+    </div>
+
+    <div class="form-container">
+        <h1>Requisição de Exame Citopatológico - Colo do Útero</h1>
+
+        <!-- Bloco 1 -->
+        <div class="bloco">
+            <div class="form-group-inline">
+                <div class="form-group">
+                    <label for="uf">UF:</label>
+                    <input type="text" id="uf" name="uf" placeholder="Digite a UF" required>
+                </div>
+                <div class="form-group">
+                    <label for="cnes-unidade">CNES da Unidade:</label>
+                    <input type="text" id="cnes-unidade" name="cnes-unidade" placeholder="Digite o CNES da Unidade"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label for="numero-protocolo">N° Protocolo:</label>
+                    <input type="text" id="numero-protocolo" name="numero-protocolo"
+                        placeholder="Digite o número do protocolo" required>
+                </div>
+                <div class="form-group">
+                    <label for="unidade-saude">Unidade de Saúde:</label>
+                    <input type="text" id="unidade-saude" name="unidade-saude" placeholder="Digite a unidade de saúde"
+                        required>
+                </div>
+            </div>
+            <div class="form-group-inline">
+                <div class="form-group">
+                    <label for="municipio">Município:</label>
+                    <input type="text" id="municipio" name="municipio" placeholder="Digite o município" required>
+                </div>
+                <div class="form-group">
+                    <label for="prontuario">Prontuário:</label>
+                    <input type="text" id="prontuario" name="prontuario" placeholder="Digite o prontuário" required>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bloco 2 -->
+        <div class="bloco">
+            <h2>Informações Pessoais</h2>
+            <form id="form-exame">
+                <div class="form-group-inline">
+                    <div class="form-group">
+                        <label for="nome">Nome da Paciente:</label>
+                        <input type="text" id="nome" name="nome" placeholder="Digite o nome completo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="data-nascimento">Data de Nascimento:</label>
+                        <input type="date" id="data-nascimento" name="data-nascimento" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cartao-sus">Cartão SUS:</label>
+                        <input type="text" id="cartao-sus" name="cartao-sus" placeholder="Digite o número do cartão SUS"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="endereco">Endereço Completo:</label>
+                        <input type="text" id="endereco" name="endereco" placeholder="Digite o endereço completo"
+                            required>
+                    </div>
+                </div>
+                <div class="form-group-inline">
+                    <div class="form-group">
+                        <label for="telefone">Telefone:</label>
+                        <input type="text" id="telefone" name="telefone" placeholder="Digite o telefone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cep">CEP:</label>
+                        <input type="text" id="cep" name="cep" placeholder="Digite o CEP" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="nacionalidade">Nacionalidade:</label>
+                        <input type="text" id="nacionalidade" name="nacionalidade" placeholder="Digite a nacionalidade"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cpf">CPF:</label>
+                        <input type="text" id="cpf" name="cpf" placeholder="Digite o CPF" required>
+                    </div>
+                </div>
+                <div class="form-group-inline">
+                    <div class="form-group">
+                        <label for="data-coleta">Data da Coleta:</label>
+                        <input type="date" id="data-coleta" name="data-coleta" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="material-coletado">Material Coletado:</label>
+                        <input type="text" id="material-coletado" name="material-coletado"
+                            placeholder="Descreva o material coletado" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tipo-exame">Tipo de Exame:</label>
+                        <select id="tipo-exame" name="tipo-exame" required>
+                            <option value="">Selecione o tipo de exame</option>
+                            <option value="citopatologico">Citopatológico</option>
+                            <option value="histopatologico">Histopatológico</option>
+                            <option value="imuno-histoquimico">Imuno-histoquímico</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="diagnostico-clinico">Diagnóstico Clínico:</label>
+                        <input type="text" id="diagnostico-clinico" name="diagnostico-clinico"
+                            placeholder="Digite o diagnóstico clínico" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="observacoes">Observações:</label>
+                    <textarea id="observacoes" name="observacoes" placeholder="Escreva observações adicionais"
+                        rows="4"></textarea>
+                </div>
+            </form>
+        </div>
+
+        <!-- Bloco 3 -->
+        <div class="bloco">
+            <h3>Dados da Anamnese</h3>
+            <form id="form-anamnese">
+                <div class="form-group-inline">
+                    <div class="form-group">
+                        <label for="motivo-do-exame">Motivo do Exame:</label>
+                        <select id="motivo-do-exame" name="motivo-do-exame" required>
+                            <option value="">Selecione o motivo do exame</option>
+                            <option value="rastreamento">Rastreamento</option>
+                            <option value="repeticao-ou-exame-alterado">Repetição ou exame alterado</option>
+                            <option value="seguimento">Seguimento</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="ja-fez-tratamento-por-radioterapia">Já fez tratamento por radioterapia?:</label>
+                        <select id="ja-fez-tratamento-por-radioterapia" name="ja-fez-tratamento-por-radioterapia"
+                            required>
+                            <option value="sim">Sim</option>
+                            <option value="nao">Não</option>
+                            <option value="nao-sei">Não sei</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefone-enfermeira">Telefone:</label>
+                        <input type="text" id="telefone-enfermeira" name="telefone-enfermeira"
+                            placeholder="Digite o telefone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="enfermeira">Nome da Enfermeira:</label>
+                        <input type="text" id="enfermeira" name="enfermeira" placeholder="Digite o nome da enfermeira"
+                            required>
+                    </div>
+                </div>
+                <div class="form-group-inline">
+                    <div class="form-group">
+                        <label for="coren">Coren Enfermeira:</label>
+                        <input type="text" id="coren" name="coren" placeholder="Digite o Coren da enfermeira" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="clinica-anamnese">Nome da Clínica:</label>
+                        <input type="text" id="clinica-anamnese" name="clinica-anamnese"
+                            placeholder="Digite o nome da clínica" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="data-ultima-menstruacao">Data da Última Menstruação:</label>
+                        <input type="date" id="data-ultima-menstruacao" name="data-ultima-menstruacao">
+                    </div>
+                    <div class="form-group">
+                        <label for="data-ultima-menstruacao-opcoes">Opções sobre a Menstruação:</label>
+                        <select id="data-ultima-menstruacao-opcoes" name="data-ultima-menstruacao-opcoes">
+                            <option value="nao-se-aplica">Não se aplica</option>
+                            <option value="nao-sabe">Não sabe</option>
+                            <option value="nao-lembra">Não lembra</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group-inline">
+                    <div class="form-group">
+                        <label for="sangramento-na-menopausa">Sangramento na menopausa?:</label>
+                        <select id="sangramento-na-menopausa" name="sangramento-na-menopausa" required>
+                            <option value="sim">Sim</option>
+                            <option value="nao">Não</option>
+                            <option value="nao-sabe">Não sabe</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="usa-hormonio">Usa Hormônio?:</label>
+                        <select id="usa-hormonio" name="usa-hormonio" required>
+                            <option value="sim">Sim</option>
+                            <option value="nao">Não</option>
+                            <option value="nao-sabe">Não sabe</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="tipo-exame-anamnese">Tipo de Exame:</label>
+                        <select id="tipo-exame-anamnese" name="tipo-exame-anamnese" required>
+                            <option value="">Selecione o tipo de exame</option>
+                            <option value="citopatologico">Citopatológico</option>
+                            <option value="histopatologico">Histopatológico</option>
+                            <option value="imuno-histoquimico">Imuno-histoquímico</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="fez-o-papa-alguma-vez">Fez o (PAPA) alguma vez?:</label>
+                        <select id="fez-o-papa-alguma-vez" name="fez-o-papa-alguma-vez" required>
+                            <option value="sim">Sim</option>
+                            <option value="nao">Não</option>
+                            <option value="nao-sabe">Não sabe</option>
+                        </select>
+                    </div>
+                </div>
+                    <div class="form-group">
+                        <label for="usa-DIU">Usa DIU?:</label>
+                        <select id="usa-DIU" name="usa-DIU" required>
+                            <option value="sim">Sim</option>
+                            <option value="nao">Não</option>
+                            <option value="nao-sabe">Não sabe</option>
+                        </select>
+                    </div>
+                    <div class="form-group-inline">
+                    <div class="form-group">
+                        <label for="esta-gravida">Está Grávida?:</label>
+                        <select id="esta-gravida" name="esta-gravida" required>
+                            <option value="sim">Sim</option>
+                            <option value="nao">Não</option>
+                            <option value="nao-sabe">Não sabe</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="usa-pilula-anticoncepcional">Usa Pílula Anticoncepcional?:</label>
+                        <select id="usa-pilula-anticoncepcional" name="usa-pilula-anticoncepcional" required>
+                            <option value="sim">Sim</option>
+                            <option value="nao">Não</option>
+                            <option value="nao-sabe">Não sabe</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <body>
+    <div class="bloco">
+        <h4><b>Exame Clínico</b></h4>
+        <form id="form-clinico">
+            <div class="form-section">
+                <div class="column">
+                    <p><b></b>Inspeção do colo:</b></p>
+                    <div>
+                        <label><input type="checkbox">Normal</label><br>
+                        <input type="checkbox" id="inspecao-do-colo-ausente" name="inspecao-do-colo" value="ausente-anomalias">
+                        <label for="inspecao-do-colo-ausente">Ausente anomalias</label><br>
+                        <input type="checkbox" id="inspecao-do-colo-alterado" name="inspecao-do-colo" value="alterado">
+                        <label for="inspecao-do-colo-alterado">Alterado</label><br>
+                        <input type="checkbox" id="inspecao-do-colo-nao-visualizado" name="inspecao-do-colo" value="colo-nao-visualizado">
+                        <label for="inspecao-do-colo-nao-visualizado">Colo não visualizado</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="ja-fez-tratamento-por-radioterapia-clinico">Já fez tratamento por radioterapia?:</label>
+                    <select id="ja-fez-tratamento-por-radioterapia-clinico" name="ja-fez-tratamento-por-radioterapia" required>
+                        <option value="sim">Sim</option>
+                        <option value="nao">Não</option>
+                        <option value="nao-sei">Não sei</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="data-da-coleta">Data da Coleta:</label>
+                    <input type="date" id="data-da-coleta" name="data-da-coleta">
+                </div>
+                <div class="form-group">
+                    <label for="responsavel">Responsável:</label>
+                    <input type="text" id="responsavel" name="responsavel" required placeholder="Responsável pelo exame" size="50">
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="bloco">
+        <h5><b>Identificação do laboratório</b></h5>
+        <form id="form-laboratorio">
+            <div class="form-group-inline">
+                <div class="form-group">
+                    <label for="cnes-do-laboratorio">CNES do laboratório:</label>
+                    <input type="text" id="cnes-do-laboratorio" name="cnes-do-laboratorio" required placeholder="CNES do laboratório" size="50">
+                </div>
+                <div class="form-group">
+                    <label for="numero-do-exame">Número do exame:</label>
+                    <input type="text" id="numero-do-exame" name="numero-do-exame" required placeholder="Número do exame" size="50">
+                </div>
+                <div class="form-group">
+                    <label for="nome-do-laboratorio">Nome do laboratório:</label>
+                    <input type="text" id="nome-do-laboratorio" name="nome-do-laboratorio" required placeholder="Nome do laboratório" size="50">
+                </div>
+                <div class="form-group">
+                    <label for="recebido-em">Recebido em:</label>
+                    <input type="date" id="recebido-em" name="recebido-em">
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="bloco">
+        <h6><b>Resultado de exame citopatológico colo do útero</b></h6>
+        <form id="form-resultado">
+            <div class="form-section">
+                <div class="column">
+                    <h6>Avaliação Pré-Analítica</h6>
+                    <p>Amostra Rejeitada Por:</p>
+                    <label><input type="checkbox"> Ausência ou erro na identificação da lâmina, frasco ou formulário</label><br>
+                    <label><input type="checkbox"> Lâmina danificada ou ausente</label><br>
+                    <label><input type="checkbox"> Causas alheias ao laboratório; especificar: <input type="text" class="input-field"></label><br>
+                    <label><input type="checkbox"> Outras causas; especificar: <input type="text" class="input-field"></label><br>
+                    <p>Epitélios Representados na Amostra:</p>
+                    <label><input type="checkbox"> Escamoso</label><br>
+                    <label><input type="checkbox"> Glandular</label><br>
+                    <label><input type="checkbox"> Metaplásico</label>
+                </div>
+                <div class="column">
+                    <h6>Adequabilidade do Material</h6>
+                    <label><input type="checkbox"> Satisfatória</label><br>
+                    <label><input type="checkbox"> Insatisfatória para avaliação citológica devido a:</label><br>
+                    <label><input type="checkbox"> Material escasso ou hipocelular em menos de 10% do esfregaço</label><br>
+                    <label><input type="checkbox"> Sangue em mais de 75% do esfregaço</label><br>
+                    <label><input type="checkbox"> Piócitos em mais de 75% do esfregaço</label><br>
+                    <label><input type="checkbox"> Artefatos de dessecamento em mais de 75% do esfregaço</label><br>
+                    <label><input type="checkbox"> Contaminantes externos em mais de 75% do esfregaço</label><br>
+                    <label><input type="checkbox"> Intensa superposição celular em mais de 75% do esfregaço</label><br>
+                    <label><input type="checkbox"> Outros, especificar: <input type="text" class="input-field"></label>
+                </div>
+            </div>
+            <!-- Outras seções do formulário conforme necessário -->
+        </form>
+    </div>
+
+            <div class="bloco">
+                <h6><b>Diagnóstico Descritivo</b></h6>
+                <form id="form-diagnostico">
+                    <fieldset>
+                        <legend>Dentro dos limites da normalidade no material examinado?</legend>
+                        <label><input type="checkbox" name="diagnostico-normalidade" value="sim"> Sim</label>
+                        <label><input type="checkbox" name="diagnostico-normalidade" value="nao"> Não</label>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Alterações Celulares Benignas Relativas ou Reparativas</legend>
+                        <label><input type="checkbox" name="alteracao-celular" value="inflamacao"> Inflamação</label><br>
+                        <label><input type="checkbox" name="alteracao-celular" value="metaplasia"> Metaplasia escamosa imatura</label><br>
+                        <label><input type="checkbox" name="alteracao-celular" value="reparacao"> Reparação</label><br>
+                        <label><input type="checkbox" name="alteracao-celular" value="atrofia"> Atrofia com inflamação</label><br>
+                        <label><input type="checkbox" name="alteracao-celular" value="radiacao"> Radiação</label><br>
+                        <label>Outros, especificar: <input type="text" name="alteracao-celular-outros"></label>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Microbiologia</legend>
+                        <label><input type="checkbox" name="microbiologia" value="lactobacillus"> Lactobacillus sp</label><br>
+                        <label><input type="checkbox" name="microbiologia" value="gardnerella"> Bacilos supracitoplasmáticos (Gardnerella/Mobiluncus)</label><br>
+                        <label><input type="checkbox" name="microbiologia" value="candida"> Candida sp</label><br>
+                        <label><input type="checkbox" name="microbiologia" value="trichomonas"> Trichomonas vaginalis</label><br>
+                        <label><input type="checkbox" name="microbiologia" value="outros"> Outros, especificar: <input type="text" name="microbiologia-outros"></label>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Células Atípicas de Significado Indeterminado</legend>
+                        <label><input type="checkbox" name="celulas-atipicas-escamosas" value="possivelmente-nao-neoplasicas"> Escamosas: Possivelmente não neoplásicas</label><br>
+                        <label><input type="checkbox" name="celulas-atipicas-escamosas" value="nao-afastar-lesao"> Escamosas: Não se pode afastar lesão de alto grau</label><br>
+                        <label><input type="checkbox" name="celulas-atipicas-glandulares" value="possivelmente-nao-neoplasicas"> Glandulares: Possivelmente não neoplásicas</label><br>
+                        <label><input type="checkbox" name="celulas-atipicas-glandulares" value="nao-afastar-lesao"> Glandulares: Não se pode afastar lesão de alto grau</label><br>
+                        <label><input type="checkbox" name="celulas-atipicas-indefinidas" value="possivelmente-nao-neoplasicas"> De origem indefinida: Possivelmente não neoplásicas</label><br>
+                        <label><input type="checkbox" name="celulas-atipicas-indefinidas" value="nao-afastar-lesao"> De origem indefinida: Não se pode afastar lesão de alto grau</label>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Atipias em Células Escamosas</legend>
+                        <label><input type="checkbox" name="atipias-escamosas" value="lesao-baixo-grau"> Lesão intra-epitelial de baixo grau</label><br>
+                        <label><input type="checkbox" name="atipias-escamosas" value="lesao-alto-grau"> Lesão intra-epitelial de alto grau</label><br>
+                        <label><input type="checkbox" name="atipias-escamosas" value="carcinoma"> Carcinoma epidermoide invasor</label>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Atipias em Células Glandulares</legend>
+                        <label><input type="checkbox" name="atipias-glandulares" value="adenocarcinoma-in-situ"> Adenocarcinoma "in situ"</label><br>
+                        <label><input type="checkbox" name="atipias-glandulares" value="adenocarcinoma-invasor"> Adenocarcinoma invasor</label><br>
+                        <label><input type="checkbox" name="atipias-glandulares" value="cervical"> Cervical</label><br>
+                        <label><input type="checkbox" name="atipias-glandulares" value="endometrial"> Endometrial</label><br>
+                        <label><input type="checkbox" name="atipias-glandulares" value="sem-outras-especificacoes"> Sem outras especificações</label>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Outras Neoplasias Malignas</legend>
+                        <label><input type="checkbox" name="neoplasias-malignas" value="outras-neoplasias"> Outras neoplasias malignas</label>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Presença de Células Endometriais</legend>
+                        <label><input type="checkbox" name="celulas-endometriais" value="pos-menopausa"> Presença de células endometriais na pós-menopausa ou acima de 40 anos, fora do período menstrual</label>
+                    </fieldset>
+
+                    <div>
+                        <label for="observacoes-gerais">Observações Gerais:</label>
+                        <textarea id="observacoes-gerais" name="observacoes-gerais" rows="3" cols="50"></textarea>
+                    </div>
+                </form>
+            </div>
+
+
+    <!-- Outros campos do formulário conforme necessário -->
+
+    <button onclick="imprimirFormulario()">Imprimir Formulário</button>
+
+    <script>
+        function imprimirFormulario() {
+            window.print();
+        }
+    </script>
+</body>
+
+</html>
